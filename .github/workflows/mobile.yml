@@ -4,6 +4,7 @@ on: push
 
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,6 +23,7 @@ jobs:
         env:
           CI: true
   test:
+    name: Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
