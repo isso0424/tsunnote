@@ -7,6 +7,7 @@
     "web": "expo start --web",
     "lint": "eslint './**/*.{js,jsx,ts,tsx}';prettier './**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint './**/*.{js,jsx,ts,tsx}' --fix;prettier './**/*.{js,jsx,ts,tsx}' --write",
+    "test": "jest",
     "eject": "expo eject"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@types/jest": "^27.0.2",
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
@@ -32,9 +34,13 @@
     "eslint-plugin-react": "^7.26.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.2",
+    "jest": "^27.2.3",
     "lint-staged": "^11.1.2",
     "prettier": "^2.4.1",
     "typescript": "~4.0.0"
   },
-  "private": true
+  "private": true,
+  "jest": {
+    "preset": "react-native"
+  }
 }
