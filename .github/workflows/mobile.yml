@@ -1,0 +1,51 @@
+name: Mobile
+
+on: push
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['14.x', '16.x']
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install
+        run: |
+          cd mobile
+          yarn
+      - name: Lint
+        run: |
+          cd mobile
+          yarn lint
+        env:
+          CI: true
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['14.x', '16.x']
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install
+        run: |
+          cd mobile
+          yarn
+      - name: Test
+        run: |
+          cd mobile
+          yarn test
+        env:
+          CI: true
