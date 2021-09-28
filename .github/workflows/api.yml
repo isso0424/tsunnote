@@ -18,7 +18,9 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build
-      run: go build -v .
+      run: |
+        cd api
+        go build -v .
   list:
     name: Lint
     runs-on: ubuntu-latest
@@ -34,7 +36,9 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Lint
-      run: go vet ./...
+      run: |
+        cd api
+        go vet ./...
 
     - name: Check format
       run: exit $(test -z $(gofmt -e -w -s))
@@ -53,7 +57,9 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Get Dependencies
-      run: go mod download
+      run: |
+        cd api
+        go mod download
 
     - name: Test
       run: go test -v ./...

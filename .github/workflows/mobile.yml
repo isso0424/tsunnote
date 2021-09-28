@@ -17,7 +17,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install
-        run: yarn
+        run: |
+          cd mobile
+          yarn
       - name: Lint
         run: yarn lint
         env:
@@ -36,7 +38,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install
-        run: yarn
+        run: |
+          cd mobile
+          yarn
       - name: Test
         run: yarn test
         env:
