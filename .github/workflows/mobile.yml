@@ -21,7 +21,9 @@ jobs:
           cd mobile
           yarn
       - name: Lint
-        run: yarn lint
+        run: |
+          cd mobile
+          yarn lint
         env:
           CI: true
   test:
@@ -42,6 +44,8 @@ jobs:
           cd mobile
           yarn
       - name: Test
-        run: yarn test
+        run: |
+          cd mobile
+          yarn test
         env:
           CI: true
