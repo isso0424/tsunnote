@@ -11,6 +11,6 @@ const (
 
 type Error struct {
 	error
-	Code errorCode
+	Code   errorCode
 	Detail map[string]string
 }
