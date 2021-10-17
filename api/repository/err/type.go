@@ -1,6 +1,6 @@
 package err
 
-type code int
+type errorCode int
 
 const (
 	NotFound = iota
@@ -11,6 +11,6 @@ const (
 
 type Error struct {
 	error
-	errorCode code
-	detail map[string]string
+	Code errorCode
+	Detail map[string]string
 }

@@ -3,22 +3,22 @@ package err
 import "fmt"
 
 func (e Error) Error() string {
-	switch e.errorCode {
+	switch e.Code {
 	case NotFound:
-		return fmt.Sprintf("Notfound: %s", e.detail["target"])
+		return fmt.Sprintf("Notfound: %s", e.Detail["target"])
 	case UnsupportedData:
-		return fmt.Sprintf("Unsupported data: %s", e.detail["data"])
+		return fmt.Sprintf("Unsupported data: %s", e.Detail["data"])
 	case InvalidValue:
-		return fmt.Sprintf("Invalid value: %s", e.detail["value"])
+		return fmt.Sprintf("Invalid value: %s", e.Detail["value"])
 	case Internal:
-		return fmt.Sprintf("Internal server error: %s", e.detail["error"])
+		return fmt.Sprintf("Internal server error: %s", e.Detail["error"])
 	default:
 		return "Unknown error"
 	}
 }
 
 func (e Error) ErrorToClient() string {
-	if e.errorCode == Internal {
+	if e.Code == Internal {
 		return "Internal server error"
 	}
 
