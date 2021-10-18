@@ -5,5 +5,5 @@ type Quota struct {
 	SecondsPerDay int32  `json:"targetSecondsPerDay"`
 	TargetWeekDay []int  `json:"targetWeekDay"`
 	NextQuotaID   string `json:"nextQuotaID"`
-	User          User   `json:"user"`
+	CreatedAt     ParsedDateTime `json:"createdAt"`
 }
