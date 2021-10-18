@@ -2,6 +2,9 @@ package domain
 
 type ReadingRecord struct {
 	Intersection
+	UserId string `json:"userId"`
 	Book  Book  `json:"book"`
-	Quota Quota `json:"quota"`
+	PageCount int `json:"pageCount"`
+	Dulation int `json:"dulation"`
+	RegisteredAt ParsedDateTime `json:"registeredAt"`
 }
