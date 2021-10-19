@@ -8,7 +8,7 @@ import (
 	"github.com/google/uuid"
 )
 
-type RecordFactory struct {}
+type RecordFactory struct{}
 
 func NewRecordFactory() RecordFactory {
 	return RecordFactory{}
@@ -26,10 +26,10 @@ func (f RecordFactory) Generate(
 		Intersection: domain.Intersection{
 			ID: id,
 		},
-		PageCount: pageCount,
-		Dulation: dulation,
-		UserId: userId,
-		Book: book,
+		PageCount:    pageCount,
+		Dulation:     dulation,
+		UserId:       userId,
+		Book:         book,
 		RegisteredAt: domain.NowDateTime(),
 	}, nil
 }
@@ -46,10 +46,10 @@ func (f RecordFactory) Reconstruct(
 		Intersection: domain.Intersection{
 			ID: id,
 		},
-		PageCount: pageCount,
-		Dulation: dulation,
-		UserId: userId,
-		Book: book,
+		PageCount:    pageCount,
+		Dulation:     dulation,
+		UserId:       userId,
+		Book:         book,
 		RegisteredAt: domain.ParseDateTime(registeredAt),
 	}, nil
 }

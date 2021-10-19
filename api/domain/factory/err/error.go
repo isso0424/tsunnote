@@ -19,7 +19,7 @@ func (e invalidData) GetDetail() map[string]string {
 }
 
 type constraintViolate struct {
-	field string
+	field      string
 	constraint string
 }
 

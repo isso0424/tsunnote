@@ -11,7 +11,7 @@ import (
 	"github.com/google/uuid"
 )
 
-type UserFactory struct {}
+type UserFactory struct{}
 
 const MAX_NAME_LENGTH = 32
 
@@ -21,7 +21,7 @@ func NewUserFactory() UserFactory {
 
 type InitialQuota struct {
 	SecondsPerDay int32
-	TargetWeekDay []int          `json:"targetWeekDay"`
+	TargetWeekDay []int                 `json:"targetWeekDay"`
 	CreatedAt     domain.ParsedDateTime `json:"createdAt"`
 }
 
@@ -58,25 +58,25 @@ func (f UserFactory) Generate(
 		},
 		SecondsPerDay: firstQuota.SecondsPerDay,
 		TargetWeekDay: firstQuota.TargetWeekDay,
-		NextQuotaID: "",
-		CreatedAt: domain.NowDateTime(),
+		NextQuotaID:   "",
+		CreatedAt:     domain.NowDateTime(),
 	}
 
 	return domain.User{
 		Intersection: domain.Intersection{
 			ID: id,
 		},
-		Name: name,
-		PassHashed: passHashed,
-		Email: email,
+		Name:         name,
+		PassHashed:   passHashed,
+		Email:        email,
 		FirstQuotaID: quota.ID,
-		Quotas: []domain.Quota{ quota },
-		BookShelf: shelf,
+		Quotas:       []domain.Quota{quota},
+		BookShelf:    shelf,
 	}, nil
 }
 
 type RawQuota struct {
-	ID string
+	ID            string
 	SecondsPerDay int32
 	TargetWeekDay string
 	NextQuotaID   string
@@ -104,8 +104,8 @@ func parseQuotaList(firstQuotaId string, quotas []RawQuota) ([]domain.Quota, err
 						},
 						SecondsPerDay: quota.SecondsPerDay,
 						TargetWeekDay: tWeekD,
-						NextQuotaID: quota.NextQuotaID,
-						CreatedAt: domain.ParseDateTime(quota.CreatedAt),
+						NextQuotaID:   quota.NextQuotaID,
+						CreatedAt:     domain.ParseDateTime(quota.CreatedAt),
 					},
 				)
 
@@ -144,11 +144,11 @@ func (f UserFactory) Reconstruction(
 		Intersection: domain.Intersection{
 			ID: id,
 		},
-		Name: name,
-		PassHashed: passHashed,
-		Email: email,
+		Name:         name,
+		PassHashed:   passHashed,
+		Email:        email,
 		FirstQuotaID: firstQuotaId,
-		BookShelf: shelf,
-		Quotas: quotaList,
+		BookShelf:    shelf,
+		Quotas:       quotaList,
 	}, nil
 }

@@ -19,7 +19,7 @@ type BookFactory struct {
 }
 
 func NewBookFactory(f bookAPIFactory) BookFactory {
-	return BookFactory{ apiFactory: f }
+	return BookFactory{apiFactory: f}
 }
 
 func (f BookFactory) Generate(title string, pageCount int) (domain.Book, err.Error) {
@@ -34,9 +34,9 @@ func (f BookFactory) Generate(title string, pageCount int) (domain.Book, err.Err
 		Intersection: domain.Intersection{
 			ID: id,
 		},
-		Title: title,
-		PageCount: pageCount,
-		ISBN: "",
+		Title:        title,
+		PageCount:    pageCount,
+		ISBN:         "",
 		RegisteredAt: domain.NowDateTime(),
 	}, nil
 }
@@ -47,13 +47,13 @@ func (f BookFactory) Reconstruction(id, title, isbn string, pageCount int, regis
 		return domain.Book{}, err.NewConstraintViolate(fmt.Sprintf("shorter than %d characters", MAX_TITLE_LEN), "title")
 	}
 
-	return domain.Book {
+	return domain.Book{
 		Intersection: domain.Intersection{
 			ID: id,
 		},
-		Title: title,
-		PageCount: pageCount,
-		ISBN: isbn,
+		Title:        title,
+		PageCount:    pageCount,
+		ISBN:         isbn,
 		RegisteredAt: registeredAt,
 	}, nil
 }
